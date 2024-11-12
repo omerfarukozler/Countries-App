@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Card, CardContent, Grid, Pagination, Stack, Typography } from '@mui/material'
 import CountriesDetail from '../CountriesDetail/CountriesDetail'
 import PropTypes from 'prop-types'
@@ -8,10 +8,10 @@ import Loading from '../Loading/Loading'
 function CountriesList({ countries, loading }) {
     const [selectedCountry, setSelectedCountry] = useState(null)
     const [currentPage, setCurrentPage] = useState(1)
-    
-    if (!countries || !countries.length) {
-        return null;
-    }
+
+    useEffect(() => {
+        setCurrentPage(1)
+    }, [countries])
 
     const itemsPerPage = 50;
     const totalPages = Math.ceil(countries.length / itemsPerPage)
@@ -28,6 +28,10 @@ function CountriesList({ countries, loading }) {
 
     const handleButtonClick = (country) => {
         setSelectedCountry(country)
+    }
+
+    if (!countries || !countries.length) {
+        return null;
     }
 
     if (selectedCountry) {

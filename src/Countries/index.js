@@ -15,7 +15,7 @@ function Countries() {
     return (
         <>
             <Header setFilterText={setFilterText} filterText={filterText} />
-            <CountriesList loading={loading} countries={filteredCountries}/>
+            <CountriesList loading={loading} countries={filteredCountries} />
         </>
     )
 }
