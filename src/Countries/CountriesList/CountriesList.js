@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Card, CardContent, Grid, Pagination, Stack, Typography } from '@mui/material'
-import CountriesDetail from '../CountriesDetail/CountriesDetail'
-import PropTypes from 'prop-types'
-import Loading from '../Loading/Loading'
 
+import PropTypes from 'prop-types'
+import Loading from '../../components/Loading/Loading'
+import { useNavigate } from 'react-router-dom'
 
 function CountriesList({ countries, loading }) {
-    const [selectedCountry, setSelectedCountry] = useState(null)
     const [currentPage, setCurrentPage] = useState(1)
+    const navigate = useNavigate()
 
     useEffect(() => {
         setCurrentPage(1)
@@ -27,15 +27,12 @@ function CountriesList({ countries, loading }) {
 
 
     const handleButtonClick = (country) => {
-        setSelectedCountry(country)
+        navigate(`/detail/${country.name.common}`)
+        console.log("Country name", country.name)
     }
 
     if (!countries || !countries.length) {
         return null;
-    }
-
-    if (selectedCountry) {
-        return <CountriesDetail setSelectedCountry={setSelectedCountry} country={selectedCountry} />
     }
 
     return (
@@ -89,6 +86,12 @@ function CountriesList({ countries, loading }) {
     )
 }
 CountriesList.propTypes = {
-    countries: PropTypes.array
-}
+    countries: PropTypes.array,
+    loading: PropTypes.bool,
+};
+CountriesList.defaultProps = {
+    countries: [],
+    loading: false,
+};
+
 export default CountriesList

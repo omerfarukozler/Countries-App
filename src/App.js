@@ -1,15 +1,16 @@
 import React from "react";
 import './App.css';
 import { BrowserRouter } from "react-router-dom";
-import { CountriesProvider } from "./context/CountriesContext";
+import { CountriesProvider} from "./context/CountriesContext";
 import Countries from "./Countries";
+import MainRouters from "./routes";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <CountriesProvider>
-          <Countries />
+          <MainRouters/>
         </CountriesProvider>
       </BrowserRouter>
     </div>

@@ -11,9 +11,11 @@ export const CountriesProvider = ({ children }) => {
 
     useEffect(() => {
         axios(process.env.REACT_APP_API_ENDPOINT)
-            .then(res => setCountries(res.data))
+            .then(res => {
+                setLoading(false)
+                setCountries(res.data)
+            })
             .catch(err => console.log(err))
-            .finally(() => setLoading(false))
     }, [])
 
     const values = {

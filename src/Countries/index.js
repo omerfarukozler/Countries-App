@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import Header from '../components/Header/Header'
+import Header from './Header/Header'
 import { useCountries } from '../context/CountriesContext';
-import CountriesList from '../components/CountriesList/CountriesList'
+import CountriesList from './CountriesList/CountriesList'
 
 function Countries() {
     const { countries, loading } = useCountries()
