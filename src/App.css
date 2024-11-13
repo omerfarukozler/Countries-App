@@ -82,3 +82,8 @@ p {
     transform: translateY(-15px);
   }
 }
+
+.menu-item {
+  width: 100px;
+  height: 50px;
+}

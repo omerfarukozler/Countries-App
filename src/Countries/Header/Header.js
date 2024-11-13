@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Box, OutlinedInput, Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import { motion } from 'framer-motion';
 import SearchBar from '../../components/SearchBar';
-
-function Header({ setFilterText, filterText }) {
+import HamburgerMenu from '../../components/HamburgerMenu';
+function Header({ setFilterText, filterText, onContinentSelect, selectedContinent }) {
 
   return (
 
@@ -14,17 +14,22 @@ function Header({ setFilterText, filterText }) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 2 }}
       >
-        <Typography color='white' variant="h5">
+        <Typography marginRight="10px" marginTop="15px" color='white' variant="h5">
           Welcome to Countries App
         </Typography>
       </motion.div>
-      <SearchBar filterText={filterText} setFilterText={setFilterText} />
+      <Box display="flex" alignItems="center" justifyContent="center" padding="5px">
+        <SearchBar filterText={filterText} setFilterText={setFilterText} />
+        <HamburgerMenu onContinentSelect={onContinentSelect} selectedContinent={selectedContinent} />
+      </Box>
     </Box>
   )
 }
 Header.propTypes = {
   setFilterText: PropTypes.func,
-  filterText: PropTypes.string
+  filterText: PropTypes.string,
+  onContinentSelect: PropTypes.func,
+  selectedContinent: PropTypes.string.isRequired,
 }
 
 export default Header

@@ -6,16 +6,28 @@ import CountriesList from './CountriesList/CountriesList'
 function Countries() {
     const { countries, loading } = useCountries()
     const [filterText, setFilterText] = useState('')
-    const filteredCountries = countries.filter((item) => {
-        return Object.keys(item).some((key) =>
-            item[key].toString().toLowerCase().includes(filterText.toLocaleLowerCase())
-        );
-    });
+    const [continentFilter, setContinentFilter] = useState('')
 
+    const handleContinentSelect = (continent) => {
+        setContinentFilter(continent === 'All' ? '' : continent)
+    }
+
+    const filteredCountries = countries
+        .filter((country) => country.name.common.toLowerCase().includes(filterText.toLowerCase()))
+        .filter((country) => continentFilter ? country.region === continentFilter : true);
+    console.log(countries)
     return (
         <>
-            <Header setFilterText={setFilterText} filterText={filterText} />
-            <CountriesList loading={loading} countries={filteredCountries} />
+            <Header
+                setFilterText={setFilterText}
+                filterText={filterText}
+                onContinentSelect={handleContinentSelect}
+                selectedContinent={continentFilter}
+            />
+            <CountriesList
+                loading={loading}
+                countries={filteredCountries}
+            />
         </>
     )
 }
