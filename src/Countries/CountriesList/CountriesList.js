@@ -3,15 +3,20 @@ import { Button, Card, CardContent, Grid, Pagination, Stack, Typography } from '
 
 import PropTypes from 'prop-types'
 import Loading from '../../components/Loading/Loading'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
-function CountriesList({ countries, loading }) {
+function CountriesList({ countries, loading, setLoading }) {
     const [currentPage, setCurrentPage] = useState(1)
     const navigate = useNavigate()
+    const location = useLocation()
 
     useEffect(() => {
         setCurrentPage(1)
     }, [countries])
+
+    useEffect(() => {
+        setLoading(false)
+    }, [location.pathname, setLoading])
 
     const itemsPerPage = 50;
     const totalPages = Math.ceil(countries.length / itemsPerPage)
@@ -25,10 +30,12 @@ function CountriesList({ countries, loading }) {
         window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
-
     const handleButtonClick = (country) => {
-        navigate(`/detail/${country.name.common}`)
-        console.log("Country name", country.name)
+        setLoading(true)
+        setTimeout(() => {
+            navigate(`/detail/${country.name.common}`)
+        }, 500)
+
     }
 
     if (!countries || !countries.length) {
@@ -88,10 +95,7 @@ function CountriesList({ countries, loading }) {
 CountriesList.propTypes = {
     countries: PropTypes.array,
     loading: PropTypes.bool,
-};
-CountriesList.defaultProps = {
-    countries: [],
-    loading: false,
+    setLoading: PropTypes.func
 };
 
 export default CountriesList

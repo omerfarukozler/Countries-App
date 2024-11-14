@@ -1,7 +1,6 @@
 import { Box, Button, Card, CardActions, CardContent, CardMedia } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { useCountries } from '../../context/CountriesContext';
 
 function CountriesDetail() {
@@ -64,9 +63,5 @@ function CountriesDetail() {
     </Box>
   );
 }
-
-CountriesDetail.propTypes = {
-  country: PropTypes.object,
-};
 
 export default CountriesDetail;

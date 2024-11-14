@@ -1,6 +1,7 @@
 import { Box, Menu, MenuItem } from '@mui/material'
 import React, { useState } from 'react'
 import { RxHamburgerMenu } from 'react-icons/rx'
+import PropTypes from 'prop-types'
 
 const Continents = [
     'All',
@@ -41,10 +42,10 @@ function HamburgerMenu({ onContinentSelect, selectedContinent }) {
                     <MenuItem
                         sx={{
                             backgroundColor: selectedContinent === continent ? '#3168d5' : 'transparent',
-                            color: selectedContinent === continent ? 'white' : '',
+                            color: selectedContinent === continent && 'white',
                             '&:hover': {
                                 backgroundColor: selectedContinent === continent ? '#3168d5' : '#3168d5',
-                                color: selectedContinent === continent ? 'white' : '',
+                                color: selectedContinent === continent && 'white',
                             },
                         }}
                         key={key}
@@ -58,5 +59,9 @@ function HamburgerMenu({ onContinentSelect, selectedContinent }) {
         </Box >
     )
 }
+HamburgerMenu.propTypes = {
+    onContinentSelect: PropTypes.func.isRequired,
+    selectedContinent: PropTypes.string.isRequired,
+  }
 
 export default HamburgerMenu

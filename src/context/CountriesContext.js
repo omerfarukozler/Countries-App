@@ -12,15 +12,16 @@ export const CountriesProvider = ({ children }) => {
     useEffect(() => {
         axios(process.env.REACT_APP_API_ENDPOINT)
             .then(res => {
-                setLoading(false)
                 setCountries(res.data)
+                setLoading(false)
             })
             .catch(err => console.log(err))
     }, [])
 
     const values = {
         countries,
-        loading
+        loading,
+        setLoading
     }
     return <CountriesContext.Provider value={values}>{children}</CountriesContext.Provider>
 }

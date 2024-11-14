@@ -26,9 +26,9 @@ function Header({ setFilterText, filterText, onContinentSelect, selectedContinen
   )
 }
 Header.propTypes = {
-  setFilterText: PropTypes.func,
-  filterText: PropTypes.string,
-  onContinentSelect: PropTypes.func,
+  setFilterText: PropTypes.func.isRequired,
+  filterText: PropTypes.string.isRequired,
+  onContinentSelect: PropTypes.func.isRequired,
   selectedContinent: PropTypes.string.isRequired,
 }
 

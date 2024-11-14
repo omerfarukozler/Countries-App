@@ -1,5 +1,6 @@
 import { OutlinedInput } from '@mui/material'
 import React from 'react'
+import PropType from 'prop-types'
 
 function SearchBar({ setFilterText, filterText }) {
   return (
@@ -19,6 +20,11 @@ function SearchBar({ setFilterText, filterText }) {
       }}
     />
   )
+}
+
+SearchBar.propType = {
+  setFilterText: PropType.func.isRequired,
+  filterText: PropType.string.isRequired,
 }
 
 export default SearchBar
