@@ -1,10 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Box, Typography } from '@mui/material'
+import { Box, Grid, Typography, useMediaQuery } from '@mui/material'
 import { motion } from 'framer-motion';
 import SearchBar from '../../components/SearchBar';
 import HamburgerMenu from '../../components/HamburgerMenu';
+import TabsPanel from '../../components/TabsPanel';
+
 function Header({ setFilterText, filterText, onContinentSelect, selectedContinent }) {
+
+  const isMobile = useMediaQuery('(max-width:1100px)')
 
   return (
 
@@ -14,13 +18,24 @@ function Header({ setFilterText, filterText, onContinentSelect, selectedContinen
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 2 }}
       >
-        <Typography marginRight="10px" marginTop="15px" color='white' variant="h5">
+        <Typography marginRight="10px" marginTop="8px" color='#fff' variant="h5">
           Welcome to Countries App
         </Typography>
       </motion.div>
       <Box display="flex" alignItems="center" justifyContent="center" padding="5px">
         <SearchBar filterText={filterText} setFilterText={setFilterText} />
-        <HamburgerMenu onContinentSelect={onContinentSelect} selectedContinent={selectedContinent} />
+        {isMobile && (
+          <Grid item>
+            <HamburgerMenu onContinentSelect={onContinentSelect} selectedContinent={selectedContinent} />
+          </Grid>
+        )}
+        {
+          !isMobile && (
+            <TabsPanel
+              onContinentSelect={onContinentSelect}
+            />
+          )
+        }
       </Box>
     </Box>
   )

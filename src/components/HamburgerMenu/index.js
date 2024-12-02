@@ -9,7 +9,7 @@ const Continents = [
     'Americas',
     'Asia',
     'Europe',
-    'Oceania'
+    'Oceania',
 ]
 
 function HamburgerMenu({ onContinentSelect, selectedContinent }) {
