@@ -1,20 +1,21 @@
 import React from "react";
-import './App.css';
 import { BrowserRouter } from "react-router-dom";
-import { CountriesProvider} from "./context/CountriesContext";
+import { CountriesProvider } from "./context/CountriesContext";
 import MainRouters from "./routes";
+import { ThemeContextProvider } from "./context/ThemeContext";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <BrowserRouter>
-        <CountriesProvider>
-          <MainRouters/>
-        </CountriesProvider>
+        <ThemeContextProvider>
+          <CountriesProvider>
+            <MainRouters />
+          </CountriesProvider>
+        </ThemeContextProvider>
       </BrowserRouter>
     </div>
   );
 }
 
 export default App;
-

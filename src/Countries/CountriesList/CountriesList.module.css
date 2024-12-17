@@ -1,0 +1,13 @@
+body {
+  overflow: hidden;
+}
+
+.countries_list {
+  width: 280px;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px;
+  flex-direction: column;
+}

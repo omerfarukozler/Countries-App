@@ -1,0 +1,40 @@
+/* NoDataPage.css */
+
+/* Sayfa düzeni */
+.nodata-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  text-align: center;
+  background-color: var(--background-default);
+  padding: 24px;
+}
+
+/* İkon */
+.nodata-icon {
+  font-size: 80px;
+  margin-bottom: 16px;
+  color: var(--primary-color);
+}
+
+/* Başlık */
+.nodata-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 8px;
+}
+
+/* Açıklama metni */
+.nodata-description {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+.nodata-button:hover {
+  background-color: var(--primary-dark);
+}

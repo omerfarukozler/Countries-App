@@ -1,0 +1,12 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3168d5;
+  height: 80px;
+  width: 100%;
+}
+.searchBar {
+  display: flex;
+  margin-right: "-100px";
+}
